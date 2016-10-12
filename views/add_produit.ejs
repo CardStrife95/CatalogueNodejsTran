@@ -1,0 +1,36 @@
+<%- include layouts/header.ejs %>
+<div class="page_data">
+	<form method="post" action="/produit/add">
+		<fieldset>
+			<legend>Ajout d'un produit</legend>
+			<table>
+				<tr>
+					<td>Nom du produit :</td>
+					<td><input type="text" name="nomProduit" /></td>
+				</tr>
+				<tr>
+					<td>Code du Produit</td>
+					<td><input type="text" name="codeProduit" /></td>
+				</tr>
+				<tr>
+					<td>Description</td>
+					<td><input type="text" name="descriptionProduit" /></td>
+				</tr>
+				<tr>
+					<td>Tarif</td>
+					<td><input type="text" name="tarifProduit" /></td>
+				</tr>
+				<tr>
+					<td>Poids</td>
+					<td><input type="text" name="poidsProduit" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="save" value="Enregistrer" /></td>
+					<td><input type="button" name="cancel" value="Annuler"
+						class="cancel" onClick="cancelProduit()"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</div>
+<%- include layouts/footer.ejs %>

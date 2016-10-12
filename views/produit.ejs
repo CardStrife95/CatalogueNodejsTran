@@ -1,0 +1,38 @@
+<%- include layouts/header.ejs %>
+<div class="page-data">
+	<div class="data-btn">
+		<button onClick="addProduit();">+ Ajouter un produit</button>
+	</div>
+	<div class="data-table">
+		<table border="1" cellpadding="7" cellspacing="7">
+			<tr>
+				<th width="50px">No</th>
+				<th>Nom du produit</th>
+				<th>Code du Produit</th>
+				<th>Description du Produit</th>
+				<th>Tarif</th>
+				<th>Poids</th>
+				<th width="120px">Action</th>
+			</tr>
+			<% if(data.length){ for(var i = 0;i < data.length;i++) { %>
+
+			<tr>
+				<td><%=(i+1)%></td>
+				<td><%=data[i].nomProduit%></td>
+				<td><%=data[i].codeProduit%></td>
+				<td><%=data[i].descriptionProduit %></td>
+				<td><%=data[i].tarifProduit%></td>
+				<td><%=data[i].poidsProduit%></td>
+				<td><a class="a-inside edit"
+					href="../produit/edit/<%=data[i].idProduit%>">Editer</a> <a
+					class="a-inside delete"
+					href="../produit/delete/<%=data[i].idProduit%>">Delete</a></td>
+			</tr>
+			<% } }else{ %>
+			<tr>
+				<td colspan="5" style="text-alignment:center;">Pas de produits actuellement</td>
+			</tr>
+			<% } %>
+		</table>
+	</div>
+</div>

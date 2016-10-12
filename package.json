@@ -6,7 +6,9 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "ejs": "*",
     "express": "3.2.6",
-    "ejs": "*"
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.11.1"
   }
 }

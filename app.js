@@ -10,6 +10,19 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
+var produit = require('./routes/produit.js');
+var catalogue = require('./routes/catalogue.js')
+
+var mysql = require('mysql');
+var connexion = require('express-myconnection');
+
+app.use(connexion(mysql,{
+	host : '127.0.0.1',
+	user : 'root',
+	password : '',
+	port : 3306,
+	database : 'catalogue',	
+},'pool'));
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -28,6 +41,22 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+
+app.get('/catalogue',catalogue.list);
+app.get('/catalogue/:id',catalogue.listOne);
+app.post('/catalogue/:id',catalogue.add_produit);
+app.get('/catalogue/edit/:id',catalogue.edit_cata);
+app.post('/catalogue/:id/produit/:idProduit',catalogue.save_edit_produit);
+app.get('/catalogue/:id/produit/:idProduit',catalogue.delete_produit);
+app.get('/catalogue/delete/:id',catalogue.delete_save);
+
+app.get('/produit',produit.list);
+app.get('/produit/add',produit.add);
+app.post('/produit/add',produit.save);
+app.get('/produit/edit/:id',produit.edit);
+app.post('/produit/edit/:id',produit.save_edit);
+app.get('/produit/delete/:id',produit.delete_save);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
